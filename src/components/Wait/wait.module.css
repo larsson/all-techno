@@ -1,12 +1,13 @@
 .wait-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  height: 100%;
 }
 
 .wait-container .headline {
   font-family: 'Press Start 2P';
   text-align: center;
+  position: relative;
   line-height: 32px;
   font-size: 24px;
   text-transform: uppercase;
@@ -15,25 +16,25 @@
 
 .waiting {
   position: relative;
-  width: 300px;
-  height: 300px;
-  bottom: 0;
+  width: 320px;
+  height: 320px;
+  display: block;
 }
 
 .waitMan {
     position: absolute;
     bottom: 10%;
     text-align: center;
-    width: 50%;
+    width: 160px;
     left: 20%;
 }
 
 .waitManHand {
     position: absolute;
-    bottom: 51%;
+    bottom: 83%;
     text-align: center;
-    width: 17%;
-    right: 24%;
+    width: 50px;
+    right: 25%;
     animation: moveHand 0.8s infinite alternate;
 }
 

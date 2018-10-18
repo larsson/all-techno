@@ -13,8 +13,10 @@ class Wait extends React.Component {
     return (
       <div className="wait-container">
         <h1 className="headline">Please wait</h1>
-        <img className="waitMan" src={KarnovWait} />
-        <img className="waitManHand" src={KarnovWaitHand} />
+        <div className="waiting">
+          <img className="waitMan" src={KarnovWait} />
+          <img className="waitManHand" src={KarnovWaitHand} />
+        </div>
       </div>
     )
   }
