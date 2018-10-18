@@ -3,7 +3,9 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import HighScore from "./components/HighScore";
 import Loading from "./components/Loading";
+import Login from "./components/Login";
 import Quiz from "./components/Quiz";
+import CurrentScore from "./components/CurrentScore";
 
 
 import './App.css';
@@ -18,9 +20,15 @@ class App extends Component {
             <Route exact path="/">
               <Loading />
             </Route>
+            <Route exact path="/login">
+              <Login />
+            </Route>
             <Route exact path="/start">
               <Quiz />
             </Route>
+            <Route exact path="/currentscore">
+              <CurrentScore />
+            </Route>            
             <Route exact path="/highscore">
               <HighScore />
             </Route>

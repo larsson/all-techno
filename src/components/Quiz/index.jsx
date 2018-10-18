@@ -52,7 +52,7 @@ class Quiz extends React.Component {
 
 
     if(isFinished) {
-      return <Redirect to="/highscore"/>
+      return <Redirect to="/currentscore"/>
     }
 
     switch(questions[currentQuestionIndex].type) {

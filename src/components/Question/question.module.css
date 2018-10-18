@@ -29,6 +29,13 @@
   border: 1px solid #FDE634;
 }
 
+.answer:active {
+  background: #FDE634;
+  color: #000;
+  text-shadow: 1px 2px #A52D2E;
+}
+
+
 .answer-container-number {
   display: none;
 }

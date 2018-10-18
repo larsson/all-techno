@@ -1,5 +1,6 @@
 import React from "react";
 import Sound from 'react-sound';
+import themeSong from './KarnovTheme.mp3'
 import Logo from "./images/karnovLogo.png"
 import karnovMan from "./images/karnovMan.png"
 import karnovDino from "./images/karnovDino.png"
@@ -36,7 +37,7 @@ class Loading extends React.Component {
             url="/coin.mp3"
             playStatus={Sound.status.PLAYING}
             onFinishedPlaying={() => {
-              window.location = "/start"
+              window.location = "/login"
             }} />
         }
         <h1>Tech Presents</h1>
@@ -48,6 +49,14 @@ class Loading extends React.Component {
         <img className="karnov-dino" src={karnovDino} alt="karnovdino" />
         <img className="karnov-meteor two" src={karnovMeteor} alt="karnovmeteor" />
         <img className="karnov-meteor three" src={karnovMeteor} alt="karnovmeteor" />
+        {(this.state && this.state.coinInserted == false) &&
+        <Sound
+          url={themeSong}
+          playStatus={Sound.status.PLAYING}
+          onLoading={this.handleSongLoading}
+          onPlaying={this.handleSongPlaying}
+          />
+        }
       </div>
     );
   }

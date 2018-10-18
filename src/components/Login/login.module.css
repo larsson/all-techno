@@ -1,0 +1,47 @@
+.login-container {
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+  height: 100%;
+}
+
+.login-head {
+  font-family: 'Press Start 2P';
+  text-align: center;
+  line-height: 32px;
+  text-transform: uppercase;
+}
+
+.login-enterName {
+  align-self: center;
+  text-align: center;
+  font-size: 24px;
+  line-height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+select {
+  background: none;
+  border: none;
+  margin: 0px 5px;
+  -webkit-appearance: none;
+  font-size: 56px;
+  font-weight: 700;
+  font-family: 'Press Start 2P';
+  text-shadow: 1px 2px #000;
+  color: #FDE634;
+}
+
+select:focus {
+  outline: 0;
+}
+
+.login-continue {
+  align-self: end;
+  text-align: right;
+  font-size: 24px;
+  font-family: 'Press Start 2P';
+  text-transform: uppercase;
+  margin: 8px;
+}
