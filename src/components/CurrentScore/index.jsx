@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Logo from "./images/karnovLogo.png"
 import './currentscore.module.css'
 
 
@@ -8,7 +7,6 @@ class CurrentScore extends React.Component {
   render() {
   return (
     <div className="currentscore-container">
-      <img className="currentscore-logo" src={Logo} alt="Karnov logo" />
       <h1>Scoreboard</h1>
       <div className="currentscore-scoreboard">
           <ul className="header">
@@ -33,6 +31,9 @@ class CurrentScore extends React.Component {
               <div>12411</div>
             </li>
           </ul>
+      </div>
+      <div className="currentscore-continue">
+        Next
       </div>
     </div>
   )

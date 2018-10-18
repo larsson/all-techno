@@ -6,7 +6,7 @@ import Loading from "./components/Loading";
 import Login from "./components/Login";
 import Quiz from "./components/Quiz";
 import CurrentScore from "./components/CurrentScore";
-
+import Wait from "./components/Wait";
 
 import './App.css';
 
@@ -28,6 +28,9 @@ class App extends Component {
             </Route>
             <Route exact path="/currentscore">
               <CurrentScore />
+            </Route>
+            <Route exact path="/wait">
+              <Wait />
             </Route>            
             <Route exact path="/highscore">
               <HighScore />

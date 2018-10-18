@@ -1,0 +1,51 @@
+.wait-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.wait-container .headline {
+  font-family: 'Press Start 2P';
+  text-align: center;
+  line-height: 32px;
+  font-size: 24px;
+  text-transform: uppercase;
+  margin-top: 48px;
+}
+
+.waiting {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  bottom: 0;
+}
+
+.waitMan {
+    position: absolute;
+    bottom: 10%;
+    text-align: center;
+    width: 50%;
+    left: 20%;
+}
+
+.waitManHand {
+    position: absolute;
+    bottom: 51%;
+    text-align: center;
+    width: 17%;
+    right: 24%;
+    animation: moveHand 0.8s infinite alternate;
+}
+
+@keyframes moveHand {
+  0% {
+    transform: translate(0%, 0%) rotate(0deg) ;
+  }
+  50% {
+    transform: translate(50%, 10%) rotate(30deg) ;
+  }
+  100% {
+    transform: translate(0%, 0%) rotate(0deg) ;
+  }
+}
+

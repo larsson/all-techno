@@ -7,7 +7,12 @@ import { Redirect } from 'react-router'
 import mp3 from './RunningOut.mp3'
 import './login.module.css'
 
+
+
 class Login extends React.Component {
+  handleNext = () => {
+
+  }
 
   render () {
     return (
@@ -37,13 +42,16 @@ class Login extends React.Component {
           </select>
         </div>
         <div className="login-continue">
-          <span>next</span>
+          <span onClick={this.handleNext}>next</span>
+          {(this.state && this.state.goNext) &&
             <Sound
-            url={mp3}
-            playStatus={Sound.status.STOPPED}
-            onLoading={this.handleSongLoading}
-            onPlaying={this.handleSongPlaying}
+              url={mp3}
+              playStatus={Sound.status.PLAYING}
+              onFinishedPlaying={() => {
+                window.location = "/start"
+              }}
             />
+          }
         </div>
       </div>
     )

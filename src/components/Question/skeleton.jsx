@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import Timer from './time.svg'
 
 class QuestionSkeleton extends React.Component {
   render () {
@@ -11,8 +12,11 @@ class QuestionSkeleton extends React.Component {
 
     return (
       <div className="question-container">
+        <div className="question-timer">
+          <img src={Timer} />
+          <span>15 SEC</span>
+        </div>
         <div className="question-text">{text}</div>
-
         {this.props.children}
 
         <div className="answer-container">
@@ -21,7 +25,7 @@ class QuestionSkeleton extends React.Component {
               key={i}
               className="answer"
               onClick={() => onAnswerSelect(i)}>
-               <span className="answer-container-number">{i+1}.</span>{answer}
+               <span className="answer-container-number">{i+1}</span>{answer}
              </div>
           ))}
         </div>

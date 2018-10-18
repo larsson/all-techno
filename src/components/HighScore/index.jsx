@@ -19,37 +19,35 @@ function ordinal_suffix_of(i) {
 }
 
 const HighScore = ({users=[
-    {name: "Nichlas", score: 100000},
-    {name: "Andrew", score: 412421},
-    {name: "Jens", score: 394432},
-    {name: "Lucas", score: 40310},
-    {name: "Adomas", score: 30034},
-    {name: "Stephanié", score: 200},
-    {name: "Jesper", score: 10},
-    {name: "Peter", score: 4}
+    {name: "NNA", score: 100000},
+    {name: "AUS", score: 412421},
+    {name: "KJM", score: 394432},
+    {name: "PGA", score: 40310},
+    {name: "HUH", score: 30034},
+    {name: "LOL", score: 200},
+    {name: "PIO", score: 10},
+    {name: "PER", score: 4}
   ]}) => {
   console.log(users);
   return (
     <div className="scores-container">
-      <h1>These are the high scorers</h1>
-      <table>
-        <thead>
-          <tr>
-            <td>RANK</td>
-            <td>NAME</td>
-            <td>SCORE</td>
-          </tr>
-        </thead>
-        <tbody>
+      <h1>These are the highscores</h1>
+      <div class="scoreboard">
+        <ul className="header">
+            <li>RANK</li>
+            <li>NAME</li>
+            <li>SCORE</li>
+        </ul>
+        <ul className="list">
           {users.map((user,i) => (
-            <tr>
-              <td>{ordinal_suffix_of(i+1)}</td>
-              <td>{user.name}</td>
-              <td>{user.score}</td>
-            </tr>
+            <li>
+              <div>{ordinal_suffix_of(i+1)}</div>
+              <div>{user.name}</div>
+              <div>{user.score}</div>
+            </li>
           ))}
-        </tbody>
-      </table>
+        </ul>
+      </div>
     </div>
   )
 }

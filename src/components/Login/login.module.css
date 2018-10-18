@@ -11,11 +11,18 @@
   text-transform: uppercase;
 }
 
+.login-headline {
+  font-size: 24px;
+}
+
+.login-subheadline {
+  font-size: 16px;
+  line-height: 24px;
+}
+
 .login-enterName {
   align-self: center;
   text-align: center;
-  font-size: 24px;
-  line-height: 32px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -24,9 +31,10 @@
 select {
   background: none;
   border: none;
-  margin: 0px 5px;
+  border-radius: 0;
+  margin: 0px 3px;
   -webkit-appearance: none;
-  font-size: 56px;
+  font-size: 48px;
   font-weight: 700;
   font-family: 'Press Start 2P';
   text-shadow: 1px 2px #000;
