@@ -8,6 +8,8 @@ import AudioQuestion from "../Question/audio";
 
 import questions from "../../config/questions.js"
 
+import './quiz.module.css'
+
 class Quiz extends React.Component {
   constructor() {
     super()

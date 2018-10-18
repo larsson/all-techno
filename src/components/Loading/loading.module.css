@@ -4,28 +4,118 @@
   right: 0;
   top: 0;
   bottom: 0;
-  background: repeating-linear-gradient(to bottom, #000000 0%, #d829b2 50%, #9d7de8 100%);
+  background: #A32E31;
+}
+
+h1 {
+  font-family: Arial, Courier, monospace;
+  text-shadow: 1px 2px #000;
+  font-size: 20px;
+  letter-spacing: 2px;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: 900;
+  text-align: center;
+  left: 50%;
+  width: 280px;
+  margin-left: -140px;
+  position: absolute;
+  top: 3%;
+}
+
+.logo {
+  width: 280px;
+  left: 50%;
+  margin-left: -140px;
+  position: absolute;
+  top: 10%;
 }
 
 .loading-text {
-  font-family: karmatic;
-  font-size: 56px;
+  font-family: 'Press Start 2P';
+  font-size: 32px;
+  text-shadow: 1px 2px #000;
   position: fixed;
   top: 40%;
   text-align: center;
   width: 100%;
-  color: yellow;
+  color: #FDE634;
 }
 
 .loading-press-any {
-  font-family: karmatic;
-  font-size: 40px;
+  font-family: 'Press Start 2P';
+  text-shadow: 1px 2px #000;
+  font-size: 24px;
   position: fixed;
-  bottom: 30%;
+  bottom: 48%;
   text-align: center;
   width: 100%;
-  color: yellow;
+  color: #FDE634;
   animation: blink 1s steps(4, start) infinite;
+}
+
+@media screen and (max-width: 340px) {
+  .loading-text {
+  font-size: 24px;
+  }
+  .loading-press-any {
+    font-size: 18px;
+  }
+}
+
+.karnov-man {
+  position: fixed;
+  bottom: 5%;
+  text-align: center;
+  width: 50%;
+  max-width: 400px;
+  right: 0;
+  animation: moveMan 5s infinite ease;
+}
+
+
+.karnov-dino {
+  position: fixed;
+  bottom: 0%;
+  text-align: center;
+  width: 60%;
+  max-width: 400px;
+  left: 0;
+  animation: moveDino 5s infinite ease;
+}
+
+.karnov-meteor {
+  position: fixed;
+  bottom: 0;
+  text-align: center;
+  width: 20%;
+  max-width: 100px;
+  right: 0;
+  z-index: -9999;
+  animation: moveMeteor 3s infinite;
+}
+
+.karnov-meteor.two {
+  position: fixed;
+  bottom: 40%;
+  text-align: center;
+  width: 20%;
+  right: -20%;
+  max-width: 100px;
+  z-index: -9999;
+  animation: moveMeteorTwo 4s infinite;
+}
+
+.karnov-meteor.three {
+  position: fixed;
+  bottom: 20%;
+  text-align: center;
+  width: 20%;
+  left: -20%;
+  max-width: 100px;
+  transform: rotate(90deg);
+  z-index: -9999;
+  animation: moveMeteorThree 3s infinite;
 }
 
 @keyframes blink {
@@ -33,3 +123,69 @@
     visibility: hidden;
   }
 }
+
+@keyframes moveDino {
+  0% {
+    left: 0%;
+  } 
+  50% {
+    left: -60%;
+  }
+  75% {
+    left: 0%;
+  }
+}
+
+
+@keyframes moveMan {
+  0% {
+    transform: rotate(0deg);
+    right: 0%;
+  } 
+  50% {
+    right: -60%;
+  }
+  60% {
+    transform: rotate(5deg);
+  }
+  75% {
+    right: 0%;
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes moveMeteor {
+  0% {
+    right: -20%;
+    bottom: -20%;
+  }
+  100% {
+    right: 150%;
+    bottom: 150%;
+  }
+}
+
+@keyframes moveMeteorTwo {
+  20% {
+    right: -20%;
+    bottom: -40%;
+  }
+  100% {
+    right: 140%;
+    bottom: 120%;
+  }
+}
+
+@keyframes moveMeteorThree {
+  0% {
+    left: -20%;
+    bottom: -20%;
+  }
+  100% {
+    left: 140%;
+    bottom: 140%;
+  }
+}
+
