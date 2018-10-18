@@ -12,6 +12,7 @@
   font-size: 24px;
   text-transform: uppercase;
   margin-top: 48px;
+  animation: blink 1s steps(4, start) infinite;
 }
 
 .waiting {
@@ -38,6 +39,46 @@
     animation: moveHand 0.8s infinite alternate;
 }
 
+.waitKarnovMeteor {
+  position: fixed;
+  bottom: 0;
+  text-align: center;
+  width: 20%;
+  max-width: 100px;
+  right: 0;
+  z-index: -9999;
+  animation: moveMeteor 3s infinite;
+}
+
+.waitKarnovMeteor.two {
+  position: fixed;
+  bottom: 40%;
+  text-align: center;
+  width: 20%;
+  right: -20%;
+  max-width: 100px;
+  z-index: -9999;
+  animation: moveMeteorTwo 3s infinite;
+}
+
+.waitKarnovMeteor.three {
+  position: fixed;
+  bottom: 20%;
+  text-align: center;
+  width: 20%;
+  left: -20%;
+  max-width: 100px;
+  transform: rotate(90deg);
+  z-index: -9999;
+  animation: moveMeteorThree 5s infinite;
+}
+
+@keyframes blink {
+  to {
+    visibility: hidden;
+  }
+}
+
 @keyframes moveHand {
   0% {
     transform: translate(0%, 0%) rotate(0deg) ;
@@ -47,6 +88,39 @@
   }
   100% {
     transform: translate(0%, 0%) rotate(0deg) ;
+  }
+}
+
+@keyframes moveMeteor {
+  0% {
+    right: -20%;
+    bottom: -20%;
+  }
+  100% {
+    right: 150%;
+    bottom: 150%;
+  }
+}
+
+@keyframes moveMeteorTwo {
+  20% {
+    right: -20%;
+    bottom: -40%;
+  }
+  100% {
+    right: 140%;
+    bottom: 120%;
+  }
+}
+
+@keyframes moveMeteorThree {
+  0% {
+    left: -20%;
+    bottom: -20%;
+  }
+  100% {
+    left: 140%;
+    bottom: 140%;
   }
 }
 
