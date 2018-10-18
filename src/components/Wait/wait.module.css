@@ -16,7 +16,7 @@
 
 .waiting {
   position: relative;
-  width: 320px;
+  width: 300px;
   height: 320px;
   display: block;
 }
@@ -34,7 +34,7 @@
     bottom: 83%;
     text-align: center;
     width: 50px;
-    right: 25%;
+    right: 21%;
     animation: moveHand 0.8s infinite alternate;
 }
 
