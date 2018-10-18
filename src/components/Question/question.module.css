@@ -1,0 +1,43 @@
+.question-container {
+  border: 20px solid grey;
+  padding: 20px;
+  font-family: 'Press Start 2P';
+}
+
+.question-text {
+  color: white;
+  font-size: 26px;
+  line-height: 46px;
+  text-transform: uppercase;
+  margin-bottom: 80px;
+}
+
+.answer-container {
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+
+.answer {
+  line-height: 20px;
+  text-align: center;
+  padding: 50px 10px;
+  border: 1px solid cyan;
+}
+
+.answer-container-number {
+  display: none;
+}
+
+/* .answer-container {
+  font-size: 20px;
+  padding: 40px 25px;
+  border-bottom: 1px solid grey;
+}
+
+.answer-container-number {
+  padding-right: 40px;
+}
+
+.question-container .answer-container:last-of-type {
+  border-bottom: 0;
+} */

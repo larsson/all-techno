@@ -1,0 +1,65 @@
+.scores-container {
+  font-family: 'Press Start 2P';
+}
+
+.scores-container h1 {
+  color: red;
+  line-height: 46px;
+  text-align: center;
+  animation: blink 1s steps(2, start) infinite;
+}
+
+.scores-container table {
+  width: 100%;
+  text-align: right;
+}
+
+.scores-container thead {
+  font-size: 24px;
+  line-height: 60px;
+}
+
+.scores-container tbody {
+  font-size: 20px;
+  line-height: 40px;
+}
+
+.scores-container td {
+  padding: 20px;
+}
+
+.scores-container td:first-of-type {
+  width: 15%;
+}
+
+.scores-container tbody tr:nth-of-type(1) {
+  color: blue;
+}
+.scores-container tbody tr:nth-of-type(2) {
+  color: cyan;
+}
+.scores-container tbody tr:nth-of-type(3) {
+  color: magenta;
+}
+.scores-container tbody tr:nth-of-type(4) {
+  color: yellow;
+}
+.scores-container tbody tr:nth-of-type(5) {
+  color: purple;
+}
+.scores-container tbody tr:nth-of-type(6) {
+  color: pink;
+}
+.scores-container tbody tr:nth-of-type(7) {
+  color: green;
+}
+.scores-container tbody tr:nth-of-type(8) {
+  color: red;
+}
+
+
+@keyframes blink {
+  to {
+    visibility: hidden;
+  }
+}
