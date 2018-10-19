@@ -13,8 +13,6 @@ class Wait extends React.Component {
       teams
     } = this.props
 
-    teams = ["haps", "snaps", "klaps"]
-
     return (
       <div className="wait-container">
         <h1 className="headline">Please wait</h1>

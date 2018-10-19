@@ -40,7 +40,7 @@ class App extends Component {
 
   render() {
     return (
-      <ActionCableProvider url='ws://ninetens.herokuapp.com/cable'>
+      <ActionCableProvider url='wss://ninetens.herokuapp.com/cable'>
         <ActionCable
           ref='appChannel'
           channel={{channel: 'MessagesChannel'}}

@@ -27,7 +27,8 @@ class Loading extends React.Component {
   }
 
   componentWillUnmount() {
-    document.body.removeEventListener('keypress')
+    document.body.removeEventListener('keypress', this.insertCoin)
+    document.body.removeEventListener('touchend', this.insertCoin);
   }
 
   render () {
