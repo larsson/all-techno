@@ -4,7 +4,9 @@ import Sound from 'react-sound';
 
 import InputLetter from './InputLetter'
 
-import { Redirect } from 'react-router'
+import { withRouter } from 'react-router'
+
+import { ActionCable } from 'react-actioncable-provider'
 
 import mp3 from './RunningOut.mp3'
 import './login.module.css'
@@ -14,29 +16,38 @@ class Login extends React.Component {
     super()
 
     this.state = {
-      shouldGoNext: false
+      name: "___"
     }
   }
 
   handleNext = () => {
-    this.setState({...this.state, shouldGoNext: true})
+    this.refs.appChannel.perform('login', {name: this.state.name})
+    this.props.history.push("/wait")
+  }
+
+  changeName = (letter, index) => {
+    this.setState({
+      ...this.state,
+      name: this.state.name.substring(0, index) + letter + this.state.name.substring(index + 1)
+    })
   }
 
   render () {
-    if(this.state.shouldGoNext) {
-      return <Redirect to="/start" />
-    }
-
+    console.log(this.props);
     return (
       <div className="login-container">
+        <ActionCable
+          ref='appChannel'
+          channel={{channel: 'MessagesChannel'}} />
+
         <div className="login-head">
           <h1 className="login-headline">Team name</h1>
           <p className="login-subheadline">Enter your teams initials</p>
         </div>
         <div className="login-enterName">
-          <InputLetter />
-          <InputLetter />
-          <InputLetter />
+          <InputLetter onChange={letter => this.changeName(letter, 0)} />
+          <InputLetter onChange={letter => this.changeName(letter, 1)} />
+          <InputLetter onChange={letter => this.changeName(letter, 2)} />
         </div>
         <div className="login-continue">
           <span onClick={this.handleNext}>next</span>
@@ -51,4 +62,4 @@ class Login extends React.Component {
   }
 }
 
-export default Login;
+export default withRouter(Login);
