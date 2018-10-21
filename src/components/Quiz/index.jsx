@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { Redirect } from 'react-router'
+import { withRouter, Redirect } from 'react-router'
 
 import TextQuestion from "../Question/text";
 import AudioQuestion from "../Question/audio";
@@ -11,19 +11,21 @@ import questions from "../../config/questions.js"
 import './quiz.module.css'
 
 class Quiz extends React.Component {
-  constructor() {
-    super()
+  state = {
+    currentQuestionIndex: 0,
+    isFinished: false,
+    questions,
+    answers: []
+  }
 
-    this.state = {
-      currentQuestionIndex: 0,
-      isFinished: false,
-      questions
-    }
+  isAnswerCorrect = (answerIndex, questionIndex=this.state.currentQuestionIndex) => {
+    return answerIndex === questions[questionIndex].correct_answer
   }
 
   onAnswerSelect = answerIndex => {
-    console.log(answerIndex);
-    this.nextQuestion()
+    this.props.onAnswer(this.isAnswerCorrect(answerIndex), 1234)
+
+    this.props.history.push("/currentscore")
   }
 
   nextQuestion() {
@@ -70,4 +72,4 @@ class Quiz extends React.Component {
   }
 }
 
-export default Quiz;
+export default withRouter(Quiz);

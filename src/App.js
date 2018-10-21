@@ -19,7 +19,8 @@ const WS_URL = 'ws://ninetens.herokuapp.com/cable'
 class App extends Component {
   state = {
     teamName: undefined,
-    teams: []
+    teams: [],
+    round: -1
   }
 
   onReceived = data => {
@@ -31,11 +32,24 @@ class App extends Component {
           teams: data.teams
         })
         break;
+      case 'roundReady':
+        this.setState({
+          ...this.state,
+          round: parseInt(data.round, 10)
+        })
+        break;
     }
   }
 
   onLogin = teamName => {
     this.refs.appChannel.perform('login', {name: teamName})
+  }
+
+  onAnswer = (isCorrect, time) => {
+    this.refs.appChannel.perform('answer', {
+      isCorrect,
+      time
+    })
   }
 
   render() {
@@ -55,14 +69,19 @@ class App extends Component {
               <Route exact path="/login">
                 <Login onLogin={name => this.onLogin(name)} />
               </Route>
-              <Route exact path="/start">
-                <Quiz />
+              <Route exact path="/round/:roundNum">
+                <Quiz onAnswer={this.onAnswer} />
               </Route>
               <Route exact path="/currentscore">
                 <CurrentScore />
               </Route>
               <Route exact path="/wait">
-                <Wait teams={this.state.teams} />
+                <div>
+                  {this.state.round > 0 &&
+                    <Redirect to={`/round/${this.state.round}`} />
+                  }
+                  <Wait teams={this.state.teams} />
+                </div>
               </Route>
               <Route exact path="/highscore">
                 <HighScore />

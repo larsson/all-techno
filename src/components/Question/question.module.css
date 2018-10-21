@@ -50,6 +50,7 @@
   position: relative;
 }
 
+.answer.selected,
 .answer:active {
   background: #FDE634;
   color: #000;
