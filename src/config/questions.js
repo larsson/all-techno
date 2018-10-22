@@ -1,4 +1,5 @@
 export default [
+  {},
   {
     text: 'Elton John released his "Candle In The Wind 1997" as a tribute to whom?',
     answers: ['Freddie Mercury', 'Marlene Dietrich', 'Dinah Shore', 'Princess Diana'],

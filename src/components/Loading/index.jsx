@@ -17,16 +17,17 @@ class Loading extends React.Component {
   }
 
   componentDidMount() {
-    let self = this
-    document.body.addEventListener('keypress', (e) => {
-      console.log('insert coin!');
+    document.body.addEventListener('keypress', this.insertCoin);
+    document.body.addEventListener('touchend', this.insertCoin);
+  }
 
-      self.setState({...self.state, coinInserted: true})
-    });
+  insertCoin = () => {
+    this.setState({...this.state, coinInserted: true})
   }
 
   componentWillUnmount() {
-    document.body.removeEventListener('keypress')
+    document.body.removeEventListener('keypress', this.insertCoin)
+    document.body.removeEventListener('touchend', this.insertCoin);
   }
 
   render () {
@@ -53,8 +54,7 @@ class Loading extends React.Component {
         <Sound
           url={themeSong}
           playStatus={Sound.status.PLAYING}
-          onLoading={this.handleSongLoading}
-          onPlaying={this.handleSongPlaying}
+          autoPlay={true}
           />
         }
       </div>
