@@ -17,25 +17,25 @@
 
 .waiting {
   position: relative;
-  width: 300px;
+  width: 280px;
   height: 320px;
   display: block;
 }
 
 .waitMan {
     position: absolute;
-    bottom: 10%;
+    bottom: 11%;
     text-align: center;
-    width: 160px;
+    width: 130px;
     left: 20%;
 }
 
 .waitManHand {
     position: absolute;
-    bottom: 83%;
+    bottom: 69%;
     text-align: center;
-    width: 50px;
-    right: 21%;
+    width: 40px;
+    right: 27%;
     animation: moveHand 0.8s infinite alternate;
 }
 
