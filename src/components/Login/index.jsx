@@ -51,6 +51,7 @@ class Login extends React.Component {
           <span onClick={this.handleNext}>next</span>
           <Sound
             url={mp3}
+            ignoreMobileRestrictions={true}
             playStatus={Sound.status.PLAYING}
             autoPlay={true}
           />

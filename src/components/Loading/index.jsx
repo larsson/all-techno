@@ -37,6 +37,7 @@ class Loading extends React.Component {
           <Sound
             url="/coin.mp3"
             playStatus={Sound.status.PLAYING}
+            ignoreMobileRestrictions={true}
             onFinishedPlaying={() => {
               window.location = "/login"
             }} />
