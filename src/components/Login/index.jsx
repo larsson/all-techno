@@ -11,11 +11,11 @@ import mp3 from './RunningOut.mp3'
 import './login.module.css'
 
 class Login extends React.Component {
-  constructor() {
+  constructor(props) {
     super()
 
     this.state = {
-      name: "___"
+      name: props.name || "___"
     }
   }
 
@@ -28,7 +28,6 @@ class Login extends React.Component {
   }
 
   handleNext = () => {
-    this.refs.appChannel.perform('login', {name: this.state.name})
     this.props.history.push("/start")
   }
 
@@ -40,6 +39,7 @@ class Login extends React.Component {
   }
 
   render () {
+    console.log(this.state.name[0]);
     return (
       <div className="login-container">
         <ActionCable
@@ -51,9 +51,9 @@ class Login extends React.Component {
           <p className="login-subheadline">Enter your teams initials</p>
         </div>
         <div className="login-enterName">
-          <InputLetter onChange={letter => this.changeName(letter, 0)} />
-          <InputLetter onChange={letter => this.changeName(letter, 1)} />
-          <InputLetter onChange={letter => this.changeName(letter, 2)} />
+          <InputLetter value={this.state.name.substr(0,1)} onChange={letter => this.changeName(letter, 0)} />
+          <InputLetter value={this.state.name.substr(1,1)} onChange={letter => this.changeName(letter, 1)} />
+          <InputLetter value={this.state.name.substr(2,1)} onChange={letter => this.changeName(letter, 2)} />
         </div>
         <div className="login-continue">
           <span onClick={this.handleNext}>next</span>

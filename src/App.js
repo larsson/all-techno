@@ -21,12 +21,21 @@ import questions from "./config/questions.js"
 const WS_URL = 'wss://ninetens.herokuapp.com/cable'
 
 class App extends Component {
-  state = {
-    teamName: undefined,
-    teams: [],
-    round: 0,
-    nextRound: 0,
-    classes: ['App']
+  constructor() {
+    super()
+
+    let cookieObj = {}
+    if(document.cookie) {
+      cookieObj = JSON.parse(document.cookie);
+    }
+
+    this.state = {
+      teamName: cookieObj.name || undefined,
+      teams: [],
+      round: 0,
+      nextRound: 0,
+      classes: ['App']
+    }
   }
 
   onReceived = data => {
@@ -66,6 +75,7 @@ class App extends Component {
   }
 
   onLogin = teamName => {
+    document.cookie = JSON.stringify({name: teamName})
     this.refs.appChannel.perform('login', {name: teamName})
   }
 
@@ -93,10 +103,12 @@ class App extends Component {
   // }
 
   onTimeRunningOut = () => {
-    this.setState({
-      ...this.state,
-      classes: [...this.state.classes, 'TimeRunningOut']
-    })
+    if(this.state.classes.indexOf('TimeRunningOut') === -1) {
+      this.setState({
+        ...this.state,
+        classes: [...this.state.classes, 'TimeRunningOut']
+      })
+    }
   }
 
   clearTimeRunningOut = () => {
@@ -147,6 +159,7 @@ class App extends Component {
               </Route>
               <Route exact path="/login">
                 <Login
+                  name={this.state.teamName}
                   setPlaySound={this.setPlaySound}
                   stopSound={this.stopSound}
                   onLogin={name => this.onLogin(name)} />
