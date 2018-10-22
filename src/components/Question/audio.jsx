@@ -12,13 +12,13 @@ class AudioQuestion extends React.Component {
     } = this.props
 
     return (
-      <div>
+      <React.Fragment>
         <QuestionSkeleton {...this.props} />
         <Sound
           url="/tmnt.mp3"
           playStatus={Sound.status.PLAYING}
           />
-      </div>
+      </React.Fragment>
     )
   }
 }
