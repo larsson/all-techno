@@ -185,7 +185,7 @@ class App extends Component {
                 </div>
               </Route>
               <Route exact path="/highscore">
-                <HighScore />
+                <HighScore scoreboard={this.state.scoreboard} />
               </Route>
             </Switch>
           </BrowserRouter>

@@ -1,5 +1,4 @@
 import React from 'react'
-import Sound from 'react-sound';
 
 import InputLetter from './InputLetter'
 
@@ -7,7 +6,6 @@ import { withRouter } from 'react-router'
 
 import { ActionCable } from 'react-actioncable-provider'
 
-import mp3 from './RunningOut.mp3'
 import './login.module.css'
 
 class Login extends React.Component {
@@ -39,7 +37,6 @@ class Login extends React.Component {
   }
 
   render () {
-    console.log(this.state.name[0]);
     return (
       <div className="login-container">
         <ActionCable

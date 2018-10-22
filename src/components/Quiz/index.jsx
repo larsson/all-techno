@@ -1,6 +1,7 @@
 import React from 'react'
-import cn from 'classnames'
 import { ActionCable } from 'react-actioncable-provider'
+
+import { withRouter } from 'react-router'
 
 import Wait from "../Wait";
 import CurrentScore from "../CurrentScore";
@@ -42,7 +43,6 @@ class Quiz extends React.Component {
 
   onAnswerSelect = answerIndex => {
     console.log('answer', answerIndex);
-    // this.nextQuestion()
 
     this.refs.appChannel.perform('answer', {
       score: this.calculateScore(this.state.time),
@@ -58,6 +58,11 @@ class Quiz extends React.Component {
       time: 0,
       score: 0
     })
+
+    //if(questions.length < this.props.round) {
+    if(5 === this.props.round) {
+      this.props.history.push('/highscore')
+    }
 
     this.refs.appChannel.perform('begin', {round: this.props.round+1})
   }
@@ -152,4 +157,4 @@ class Quiz extends React.Component {
   }
 }
 
-export default Quiz;
+export default withRouter(Quiz);

@@ -2,7 +2,6 @@ import React from "react";
 import { withRouter } from 'react-router'
 
 import Sound from 'react-sound';
-import themeSong from './KarnovTheme.mp3'
 import Logo from "./images/karnovLogo.png"
 import karnovMan from "./images/karnovMan.png"
 import karnovDino from "./images/karnovDino.png"
