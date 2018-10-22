@@ -15,6 +15,8 @@ import { Redirect } from 'react-router'
 
 import './App.css';
 
+import questions from "./config/questions.js"
+
 const WS_URL = 'wss://ninetens.herokuapp.com/cable'
 
 class App extends Component {
@@ -27,6 +29,7 @@ class App extends Component {
   }
 
   onReceived = data => {
+    console.log(data);
     switch(data.message) {
       case 'teamLoggedIn':
         this.setState({
@@ -49,6 +52,12 @@ class App extends Component {
           })
         }
         break;
+      case 'answerRecorded':
+        this.setState({
+          ...this.state,
+          scoreboard: data.scoreboard
+        })
+        break;
     }
   }
 
@@ -57,6 +66,10 @@ class App extends Component {
   }
 
   onNextRound = () => {
+    if(this.state.nextRound > questions.length) {
+      console.log('Done');
+    }
+
     this.setState({
       ...this.state,
       round: this.state.nextRound
@@ -113,6 +126,7 @@ class App extends Component {
                   clearTimeRunningOut={this.clearTimeRunningOut}
                   onNextRound={this.onNextRound}
                   onStartGame={this.onStartGame}
+                  scoreboard={this.state.scoreboard}
                   {...this.state} />
               </Route>
               <Route exact path="/currentscore">

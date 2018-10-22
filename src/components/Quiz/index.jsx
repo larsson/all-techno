@@ -31,12 +31,10 @@ class Quiz extends React.Component {
     // this.nextQuestion()
 
     this.refs.appChannel.perform('answer', {
-      score: 123,
-      teamName: this.props.teamName,
-      round: this.props.round
+      score: 15000, // TODO: Check if correct
+      round: this.props.round,
+      name: this.props.teamName
     })
-
-
 
     this.stopTimer()
 
@@ -103,7 +101,11 @@ class Quiz extends React.Component {
 
   render () {
     if(this.state.isFinished) {
-      return <CurrentScore onNext={this.nextQuestion} currentRound={this.props.round} nextRound={this.props.nextRound} />
+      return <CurrentScore
+        onNext={this.nextQuestion}
+        currentRound={this.props.round}
+        nextRound={this.props.nextRound}
+        scoreboard={this.props.scoreboard} />
     } else if (!this.props.round || this.props.round == 0) {
       return <Wait justStart={this.props.onStartGame} teams={this.props.teams} />
     } else {
