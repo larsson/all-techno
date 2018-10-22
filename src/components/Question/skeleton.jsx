@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import Timer from './time.svg'
 import Video from '../../assets/turtles.mp4'
 
@@ -16,7 +15,7 @@ class QuestionSkeleton extends React.Component {
     })
     this.props.onAnswerSelect(i)
   }
-  
+
   render () {
     const {
       text,

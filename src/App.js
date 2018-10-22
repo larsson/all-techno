@@ -39,7 +39,7 @@ class App extends Component {
         })
         break;
       case 'roundReady':
-        if(this.state.round == 0) {
+        if(this.state.round === 0) {
           this.setState({
             ...this.state,
             round: data.round,

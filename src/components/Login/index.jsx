@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import Sound from 'react-sound';
 
 import InputLetter from './InputLetter'
