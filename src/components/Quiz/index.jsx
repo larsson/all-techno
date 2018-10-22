@@ -13,6 +13,7 @@ import questions from "../../config/questions.js"
 import './quiz.module.css'
 
 const tickInterval = 25
+const baseTime = 16000
 
 class Quiz extends React.Component {
   constructor(props) {
@@ -36,7 +37,7 @@ class Quiz extends React.Component {
       return 0
     }
 
-    return 15000-time;
+    return baseTime-time;
   }
 
   onAnswerSelect = answerIndex => {
@@ -62,22 +63,24 @@ class Quiz extends React.Component {
   }
 
   nextQuestion = () => {
-    this.props.onNextRound()
+    this.stopTimer()
 
     this.setState({
       ...this.state,
       isFinished: false
     })
+
+    this.props.onNextRound()
   }
 
   startTimer = () => {
+    console.log('starting timer');
     this.timer = setInterval(this.tick, tickInterval)
   }
 
   stopTimer = () => {
+    console.log('stopping timer');
     clearInterval(this.timer)
-
-
     this.props.clearTimeRunningOut()
   }
 
@@ -85,14 +88,14 @@ class Quiz extends React.Component {
     let nextTime = this.state.time + tickInterval
     this.setState({
       ...this.state,
-      time: (nextTime > 15000 ? 15000 : nextTime)
+      time: (nextTime > baseTime ? baseTime : nextTime)
     })
 
-    if(this.state.time >= 10000) {
+    if(this.state.time >= 11000) {
       this.props.onTimeRunningOut()
     }
 
-    if(this.state.time >= 15000) {
+    if(this.state.time >= baseTime) {
       this.stopTimer()
     }
   }
@@ -110,7 +113,7 @@ class Quiz extends React.Component {
       questions
     } = this.state
 
-    const timeLeft = parseInt(Math.round(15000 - this.state.time)/1000, 10)
+    const timeLeft = parseInt(Math.round(baseTime - this.state.time)/1000, 10)
 
     switch(questions[this.props.round].type) {
       default:
@@ -123,11 +126,9 @@ class Quiz extends React.Component {
     if (!this.props.round || this.props.round === 0) {
       return <Wait justStart={this.props.onStartGame} teams={this.props.teams} />
     } else {
-      if(this.state.time === 0) {
+      if(this.state.time === 0 && !this.state.isFinished) {
         this.startTimer()
       }
-
-      console.log(this.props.round);
 
       return (
         <div className="quiz-container">
