@@ -19,7 +19,7 @@ class Wait extends React.Component {
         <img className="waitKarnovMeteor two" src={KarnovMeteor} />
         <img className="waitKarnovMeteor three" src={KarnovMeteor} />
         <div className="waiting">
-          <img className="waitMan" onClick={() => this.props.justStart()} src={KarnovWait} />
+          <img className="waitMan" onClick={() => this.props.justStart()} src={KarnovWait}  />
           <img className="waitManHand" src={KarnovWaitHand} />
         </div>
         <div className="marquee">

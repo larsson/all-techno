@@ -24,7 +24,7 @@ class QuestionSkeleton extends React.Component {
     return (
       <div className="question-container">
         <div className="question-timer">
-          <img src={Timer} />
+          <img className="spin" src={Timer} />
           <span>15 SEC</span>
         </div>
         <div className="question-text">{text}</div>
