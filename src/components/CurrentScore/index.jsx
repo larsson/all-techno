@@ -21,7 +21,6 @@ class CurrentScore extends React.Component {
   }
 
   render() {
-    console.log(this.props);
     return (
       <div className="currentscore-container">
         <div className="currentscore-wait">

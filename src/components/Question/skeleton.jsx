@@ -18,19 +18,11 @@ class QuestionSkeleton extends React.Component {
     const {
       text,
       answers,
-      src,
       timeLeft
     } = this.props
 
     return (
       <div className="question-container">
-        {src &&
-          <figure>
-            <video autoPlay="autoPlay" muted="muted" loop="loop" id="myVideo" playsinline>
-              <source src={`./${src}`} type="video/mp4" />
-            </video>
-          </figure>
-        }
         <div className="question-timer">
           <img alt="" className="spin" src={Timer} />
           <span>{timeLeft} sec</span>

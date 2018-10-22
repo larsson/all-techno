@@ -9,10 +9,6 @@ class AudioQuestion extends React.Component {
     return (
       <React.Fragment>
         <QuestionSkeleton {...this.props} />
-        <Sound
-          url="/tmnt.mp3"
-          playStatus={Sound.status.PLAYING}
-          />
       </React.Fragment>
     )
   }

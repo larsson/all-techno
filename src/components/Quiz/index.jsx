@@ -1,5 +1,5 @@
 import React from 'react'
-
+import cn from 'classnames'
 import { ActionCable } from 'react-actioncable-provider'
 
 import Wait from "../Wait";
@@ -25,6 +25,10 @@ class Quiz extends React.Component {
       time: 0,
       score: 0
     }
+  }
+
+  componentWillUnmount() {
+    this.stopTimer()
   }
 
   calculateScore = (time, answerIndex) => {
@@ -72,30 +76,36 @@ class Quiz extends React.Component {
 
   stopTimer = () => {
     clearInterval(this.timer)
-    this.setState({
-      ...this.state,
-      time: 0
-    })
+
 
     this.props.clearTimeRunningOut()
   }
 
   tick = () => {
+    let nextTime = this.state.time + tickInterval
     this.setState({
       ...this.state,
-      time: this.state.time + tickInterval
+      time: (nextTime > 15000 ? 15000 : nextTime)
     })
 
-    if(this.state.time > 10000) {
+    if(this.state.time >= 10000) {
       this.props.onTimeRunningOut()
     }
 
-    if(this.state.time > 15000) {
+    if(this.state.time >= 15000) {
       this.stopTimer()
     }
   }
 
   renderCurrentQuestion = () => {
+    if(this.state.isFinished) {
+      return <CurrentScore
+        onNext={this.nextQuestion}
+        currentRound={this.props.round}
+        nextRound={this.props.nextRound}
+        scoreboard={this.props.scoreboard} />
+    }
+
     let {
       questions
     } = this.state
@@ -110,18 +120,14 @@ class Quiz extends React.Component {
   }
 
   render () {
-    if(this.state.isFinished) {
-      return <CurrentScore
-        onNext={this.nextQuestion}
-        currentRound={this.props.round}
-        nextRound={this.props.nextRound}
-        scoreboard={this.props.scoreboard} />
-    } else if (!this.props.round || this.props.round === 0) {
+    if (!this.props.round || this.props.round === 0) {
       return <Wait justStart={this.props.onStartGame} teams={this.props.teams} />
     } else {
       if(this.state.time === 0) {
         this.startTimer()
       }
+
+      console.log(this.props.round);
 
       return (
         <div className="quiz-container">
@@ -129,6 +135,15 @@ class Quiz extends React.Component {
             ref='appChannel'
             channel={{channel: 'MessagesChannel'}}
             />
+          {questions[this.props.round].src &&
+            <div className={`video-container ${this.state.isFinished ? "isFinished" : ""}`}>
+              <video autoPlay="autoPlay" loop="loop" id="myVideo" playsInline>
+                <source src={`./${questions[this.props.round].src}`} type="video/mp4" />
+              </video>
+            </div>
+          }
+
+
           {this.renderCurrentQuestion()}
         </div>
       )

@@ -14,12 +14,6 @@ export default [
     correct_answer: 0
   },
   {
-    text: 'Who was the butler on "The Fresh Prince of Bel Air"',
-    answers: ['Geoffrey', 'Bertram', 'Carlton'],
-    type: 'text',
-    correct_answer: 0
-  },
-  {
     text: 'When was Ruby first conceived?',
     answers: [1992, 1993, 1994, 1995],
     type: 'text',
@@ -29,6 +23,7 @@ export default [
     text: 'What was the name of the pink Mighty Morphin Power Ranger?',
     answers: ['Katie', 'Katherine', 'Kacey', 'Kimberly'],
     type: 'text',
+    src: 'PowerRangers.mp4',
     correct_answer: 3,
   }
   ,
@@ -37,8 +32,14 @@ export default [
     answers: ['Toy Story', 'The Lion King', 'Aladdin', 'Oliver And Company'],
     type: 'text',
     correct_answer: 3,
-  }
-  ,
+  },
+  {
+    text: 'Who was the butler on "The Fresh Prince of Bel Air"',
+    answers: ['Geoffrey', 'Bertram', 'Carlton'],
+    type: 'text',
+    src: 'FreshPrince.mp4',
+    correct_answer: 0
+  },
   {
     text: 'Which of these Simpsons events didn\'t happen in the 90s?',
     answers: ['Homer going into space', 'The death of Maude Flanders', 'Mr Burns being shot', 'Homer and Ned getting married in Las Vegas'],
