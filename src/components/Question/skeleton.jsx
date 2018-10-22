@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Timer from './time.svg'
-import Video from '../../assets/rain.mp4'
+import Video from '../../assets/turtles.webm'
 
 
 class QuestionSkeleton extends React.Component {
@@ -27,7 +27,7 @@ class QuestionSkeleton extends React.Component {
       <div className="question-container">
         <figure>
           <video autoplay="autoplay" loop="loop" id="myVideo">
-            <source src={Video} type="video/mp4" />
+            <source src={Video} type="video/webm" />
           </video>
         </figure>
         <div className="question-timer">
