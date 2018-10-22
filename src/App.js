@@ -58,6 +58,9 @@ class App extends Component {
           scoreboard: data.scoreboard
         })
         break;
+      default:
+        console.log('Unknown action: '+data.message);
+        break;
     }
   }
 
