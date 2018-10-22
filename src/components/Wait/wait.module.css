@@ -32,9 +32,9 @@
 
 .waitManHand {
     position: absolute;
-    bottom: 69%;
+    bottom: 70%;
     text-align: center;
-    width: 40px;
+    width: 44px;
     right: 27%;
     animation: moveHand 0.8s infinite alternate;
 }

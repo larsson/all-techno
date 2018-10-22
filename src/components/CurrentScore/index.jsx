@@ -36,6 +36,61 @@ class CurrentScore extends React.Component {
                 <div>AAA</div>
                 <div>12411</div>
               </li>
+            <li>
+              <div>3.</div>
+              <div>AAA</div>
+              <div>12411</div>
+            </li>
+            <li>
+              <div>3.</div>
+              <div>AAA</div>
+              <div>12411</div>
+            </li>
+            <li>
+              <div>3.</div>
+              <div>AAA</div>
+              <div>12411</div>
+            </li>
+            <li>
+              <div>3.</div>
+              <div>AAA</div>
+              <div>12411</div>
+            </li>
+            <li>
+              <div>3.</div>
+              <div>AAA</div>
+              <div>12411</div>
+            </li>
+            <li>
+              <div>3.</div>
+              <div>AAA</div>
+              <div>12411</div>
+            </li>
+            <li>
+              <div>3.</div>
+              <div>AAA</div>
+              <div>12411</div>
+            </li>
+            <li>
+              <div>3.</div>
+              <div>AAA</div>
+              <div>12411</div>
+            </li>
+            <li>
+              <div>3.</div>
+              <div>AAA</div>
+              <div>12411</div>
+            </li>
+            <li>
+              <div>3.</div>
+              <div>AAA</div>
+              <div>12411</div>
+            </li>
+            <li>
+              <div>3.</div>
+              <div>AAA</div>
+              <div>12411</div>
+            </li>
             </ul>
         </div>
         {this.props.nextRound > this.props.currentRound &&

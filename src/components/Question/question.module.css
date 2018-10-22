@@ -20,8 +20,6 @@ figure {
   background: #A32E31;
 }
 figure video {
-  mix-blend-mode: overlay;
-  filter: grayscale(1);
   height: 100%;
 }
 

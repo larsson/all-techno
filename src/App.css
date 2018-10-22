@@ -1,5 +1,6 @@
 * {
   box-sizing: border-box;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 @font-face {
@@ -9,6 +10,7 @@
 
 body {
   margin: 0;
+  background: #A32E31;
 }
 
 html, body {
