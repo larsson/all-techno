@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+import cn from 'classnames'
 
 import { ActionCableProvider, ActionCable } from 'react-actioncable-provider'
 
@@ -21,7 +22,8 @@ class App extends Component {
     teamName: undefined,
     teams: [],
     round: 0,
-    nextRound: 0
+    nextRound: 0,
+    classes: ['App']
   }
 
   onReceived = data => {
@@ -65,10 +67,25 @@ class App extends Component {
     this.refs.appChannel.perform('begin', {round: 1})
   }
 
-  onAnswer = (isCorrect, time) => {
-    this.refs.appChannel.perform('answer', {
-      isCorrect,
-      time
+  // onAnswer = (isCorrect, time, round) => {
+  //   this.refs.appChannel.perform('answer', {
+  //     score: time,
+  //     round: round,
+  //     team: this.state.teamName
+  //   })
+  // }
+
+  onTimeRunningOut = () => {
+    this.setState({
+      ...this.state,
+      classes: [...this.state.classes, 'TimeRunningOut']
+    })
+  }
+
+  clearTimeRunningOut = () => {
+    this.setState({
+      ...this.state,
+      classes: ['App']
     })
   }
 
@@ -81,7 +98,7 @@ class App extends Component {
           channel={{channel: 'MessagesChannel'}}
           onReceived={this.onReceived} />
 
-        <div className="App">
+        <div className={cn(this.state.classes)}>
           <BrowserRouter>
             <Switch>
               <Route exact path="/">
@@ -92,6 +109,8 @@ class App extends Component {
               </Route>
               <Route exact path="/start">
                 <Quiz
+                  onTimeRunningOut={this.onTimeRunningOut}
+                  clearTimeRunningOut={this.clearTimeRunningOut}
                   onNextRound={this.onNextRound}
                   onStartGame={this.onStartGame}
                   {...this.state} />
