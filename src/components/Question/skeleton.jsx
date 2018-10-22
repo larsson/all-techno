@@ -3,11 +3,22 @@ import PropTypes from 'prop-types'
 import Timer from './time.svg'
 
 class QuestionSkeleton extends React.Component {
+  state = {
+    selectedAnswerIndex: -1
+  }
+
+  onAnswer = i => {
+    this.setState({
+      ...this.state,
+      selectedAnswerIndex: i
+    })
+    this.props.onAnswerSelect(i)
+  }
+  
   render () {
     const {
       text,
-      answers,
-      onAnswerSelect
+      answers
     } = this.props
 
     return (
@@ -23,8 +34,8 @@ class QuestionSkeleton extends React.Component {
           {answers.map((answer, i) => (
             <div
               key={i}
-              className="answer"
-              onClick={() => onAnswerSelect(i)}>
+              className={"answer "+(i === this.state.selectedAnswerIndex ? "selected" : "")}
+              onClick={() => this.onAnswer(i)}>
                <span className="answer-container-number">{i+1}</span>{answer}
              </div>
           ))}

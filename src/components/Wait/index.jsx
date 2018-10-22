@@ -1,8 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { Redirect } from 'react-router'
-
 import KarnovWait from './images/karnovWait.png';
 import KarnovWaitHand from './images/karnovWaitHand.png';
 import './wait.module.css'

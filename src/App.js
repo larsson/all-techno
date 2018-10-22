@@ -63,6 +63,13 @@ class App extends Component {
     this.refs.appChannel.perform('begin', {round: 1})
   }
 
+  onAnswer = (isCorrect, time) => {
+    this.refs.appChannel.perform('answer', {
+      isCorrect,
+      time
+    })
+  }
+
   render() {
     console.log("State:", this.state);
     return (
@@ -91,7 +98,12 @@ class App extends Component {
                 <CurrentScore />
               </Route>
               <Route exact path="/wait">
-                <Wait teams={this.state.teams} />
+                <div>
+                  {this.state.round > 0 &&
+                    <Redirect to={`/start`} />
+                  }
+                  <Wait teams={this.state.teams} />
+                </div>
               </Route>
               <Route exact path="/highscore">
                 <HighScore />
