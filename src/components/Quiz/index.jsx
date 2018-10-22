@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 
 import { ActionCable } from 'react-actioncable-provider'
 
@@ -89,11 +88,11 @@ class Quiz extends React.Component {
 
   renderCurrentQuestion = () => {
     let {
-      isFinished,
       questions
     } = this.state
 
     switch(questions[this.props.round].type) {
+      default:
       case 'text': return <TextQuestion onAnswerSelect={this.onAnswerSelect} {...questions[this.props.round]} />;
       case 'audio': return <AudioQuestion onAnswerSelect={this.onAnswerSelect} {...questions[this.props.round]} />;
     }
@@ -106,7 +105,7 @@ class Quiz extends React.Component {
         currentRound={this.props.round}
         nextRound={this.props.nextRound}
         scoreboard={this.props.scoreboard} />
-    } else if (!this.props.round || this.props.round == 0) {
+    } else if (!this.props.round || this.props.round === 0) {
       return <Wait justStart={this.props.onStartGame} teams={this.props.teams} />
     } else {
       if(this.state.time === 0) {

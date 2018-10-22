@@ -6,11 +6,6 @@ import QuestionSkeleton from './skeleton'
 class AudioQuestion extends React.Component {
 
   render () {
-    let {
-      text,
-      answers
-    } = this.props
-
     return (
       <React.Fragment>
         <QuestionSkeleton {...this.props} />

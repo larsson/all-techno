@@ -25,12 +25,12 @@ class QuestionSkeleton extends React.Component {
     return (
       <div className="question-container">
         <figure>
-          <video autoplay="autoplay" muted="muted" loop="loop" id="myVideo">
+          <video autoPlay="autoPlay" muted="muted" loop="loop" id="myVideo">
             <source src={Video} type="video/mp4" />
           </video>
         </figure>
         <div className="question-timer">
-          <img className="spin" src={Timer} />
+          <img alt="" className="spin" src={Timer} />
           <span>15 sec</span>
         </div>
         <div className="question-text">{text}</div>

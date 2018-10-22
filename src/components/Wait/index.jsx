@@ -22,7 +22,7 @@ class Wait extends React.Component {
           <img alt="" className="waitManHand" src={KarnovWaitHand} />
         </div>
         <div className="marquee">
-          <span className="streamer"><span>TEAMS ARE:</span>{teams.map((teamName,i) => <span>{teamName}</span>)}</span>
+          <span className="streamer"><span>TEAMS ARE:</span>{teams.map((teamName,i) => <span key={i}>{teamName}</span>)}</span>
         </div>
       </div>
     )
