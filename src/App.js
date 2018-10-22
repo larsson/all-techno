@@ -10,6 +10,8 @@ import Quiz from "./components/Quiz";
 import CurrentScore from "./components/CurrentScore";
 import Wait from "./components/Wait";
 
+import { Redirect } from 'react-router'
+
 import './App.css';
 
 const WS_URL = 'ws://ninetens.herokuapp.com/cable'
