@@ -22,7 +22,7 @@ class Login extends React.Component {
 
   handleNext = () => {
     this.refs.appChannel.perform('login', {name: this.state.name})
-    this.props.history.push("/wait")
+    this.props.history.push("/start")
   }
 
   changeName = (letter, index) => {

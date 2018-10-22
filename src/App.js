@@ -10,8 +10,6 @@ import Quiz from "./components/Quiz";
 import CurrentScore from "./components/CurrentScore";
 import Wait from "./components/Wait";
 
-import { Redirect } from 'react-router'
-
 import './App.css';
 
 const WS_URL = 'ws://ninetens.herokuapp.com/cable'
@@ -19,7 +17,9 @@ const WS_URL = 'ws://ninetens.herokuapp.com/cable'
 class App extends Component {
   state = {
     teamName: undefined,
-    teams: []
+    teams: [],
+    round: 0,
+    nextRound: 0
   }
 
   onReceived = data => {
@@ -31,6 +31,20 @@ class App extends Component {
           teams: data.teams
         })
         break;
+      case 'roundReady':
+        if(this.state.round == 0) {
+          this.setState({
+            ...this.state,
+            round: data.round,
+            nextRound: data.round
+          })
+        } else {
+          this.setState({
+            ...this.state,
+            nextRound: data.round
+          })
+        }
+        break;
     }
   }
 
@@ -38,9 +52,21 @@ class App extends Component {
     this.refs.appChannel.perform('login', {name: teamName})
   }
 
+  onNextRound = () => {
+    this.setState({
+      ...this.state,
+      round: this.state.nextRound
+    })
+  }
+
+  onStartGame = () => {
+    this.refs.appChannel.perform('begin', {round: 1})
+  }
+
   render() {
+    console.log("State:", this.state);
     return (
-      <ActionCableProvider url='wss://ninetens.herokuapp.com/cable'>
+      <ActionCableProvider url={WS_URL}>
         <ActionCable
           ref='appChannel'
           channel={{channel: 'MessagesChannel'}}
@@ -56,7 +82,10 @@ class App extends Component {
                 <Login onLogin={name => this.onLogin(name)} />
               </Route>
               <Route exact path="/start">
-                <Quiz />
+                <Quiz
+                  onNextRound={this.onNextRound}
+                  onStartGame={this.onStartGame}
+                  {...this.state} />
               </Route>
               <Route exact path="/currentscore">
                 <CurrentScore />

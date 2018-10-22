@@ -17,7 +17,6 @@ class Loading extends React.Component {
   }
 
   componentDidMount() {
-    let self = this
     document.body.addEventListener('keypress', this.insertCoin);
     document.body.addEventListener('touchend', this.insertCoin);
   }
