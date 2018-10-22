@@ -12,6 +12,8 @@ import questions from "../../config/questions.js"
 
 import './quiz.module.css'
 
+const tickInterval = 25
+
 class Quiz extends React.Component {
   constructor(props) {
     super(props)
@@ -25,12 +27,20 @@ class Quiz extends React.Component {
     }
   }
 
+  calculateScore = (time, answerIndex) => {
+    if(questions[this.props.round].correct_answer !== answerIndex) {
+      return 0
+    }
+
+    return 15000-time;
+  }
+
   onAnswerSelect = answerIndex => {
-    console.log(answerIndex);
+    console.log('answer', answerIndex);
     // this.nextQuestion()
 
     this.refs.appChannel.perform('answer', {
-      score: 15000, // TODO: Check if correct
+      score: this.calculateScore(this.state.time),
       round: this.props.round,
       name: this.props.teamName
     })
@@ -39,7 +49,9 @@ class Quiz extends React.Component {
 
     this.setState({
       ...this.state,
-      isFinished: true
+      isFinished: true,
+      time: 0,
+      score: 0
     })
 
     this.refs.appChannel.perform('begin', {round: this.props.round+1})
@@ -55,16 +67,13 @@ class Quiz extends React.Component {
   }
 
   startTimer = () => {
-    this.timer = setInterval(this.tick, 100)
+    this.timer = setInterval(this.tick, tickInterval)
   }
 
   stopTimer = () => {
-    console.log('Answered in: '+this.state.time);
-
     clearInterval(this.timer)
     this.setState({
       ...this.state,
-      score: this.state.time,
       time: 0
     })
 
@@ -74,7 +83,7 @@ class Quiz extends React.Component {
   tick = () => {
     this.setState({
       ...this.state,
-      time: this.state.time + 100
+      time: this.state.time + tickInterval
     })
 
     if(this.state.time > 10000) {
@@ -91,10 +100,12 @@ class Quiz extends React.Component {
       questions
     } = this.state
 
+    const timeLeft = parseInt(Math.round(15000 - this.state.time)/1000, 10)
+
     switch(questions[this.props.round].type) {
       default:
-      case 'text': return <TextQuestion onAnswerSelect={this.onAnswerSelect} {...questions[this.props.round]} />;
-      case 'audio': return <AudioQuestion onAnswerSelect={this.onAnswerSelect} {...questions[this.props.round]} />;
+      case 'text': return <TextQuestion timeLeft={timeLeft} onAnswerSelect={this.onAnswerSelect} {...questions[this.props.round]} />;
+      case 'audio': return <AudioQuestion timeLeft={timeLeft} onAnswerSelect={this.onAnswerSelect} {...questions[this.props.round]} />;
     }
   }
 

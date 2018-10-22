@@ -1,7 +1,5 @@
 import React from 'react'
 import Timer from './time.svg'
-import Video from '../../assets/turtles.mp4'
-
 
 class QuestionSkeleton extends React.Component {
   state = {
@@ -19,19 +17,23 @@ class QuestionSkeleton extends React.Component {
   render () {
     const {
       text,
-      answers
+      answers,
+      src,
+      timeLeft
     } = this.props
 
     return (
       <div className="question-container">
-        <figure>
-          <video autoPlay="autoPlay" muted="muted" loop="loop" id="myVideo">
-            <source src={Video} type="video/mp4" />
-          </video>
-        </figure>
+        {src &&
+          <figure>
+            <video autoPlay="autoPlay" muted="muted" loop="loop" id="myVideo" playsinline>
+              <source src={`./${src}`} type="video/mp4" />
+            </video>
+          </figure>
+        }
         <div className="question-timer">
           <img alt="" className="spin" src={Timer} />
-          <span>15 sec</span>
+          <span>{timeLeft} sec</span>
         </div>
         <div className="question-text">{text}</div>
         {this.props.children}
