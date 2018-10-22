@@ -20,7 +20,9 @@ class Quiz extends React.Component {
     this.state = {
       currentQuestionIndex: props.round || undefined,
       isFinished: false,
-      questions
+      questions,
+      time: 0,
+      score: 0
     }
   }
 
@@ -29,15 +31,21 @@ class Quiz extends React.Component {
     // this.nextQuestion()
 
     this.refs.appChannel.perform('answer', {
-      isCorrect: true,
       score: 123,
-      teamName: this.props.teamName
+      teamName: this.props.teamName,
+      round: this.props.round
     })
+
+
+
+    this.stopTimer()
 
     this.setState({
       ...this.state,
       isFinished: true
     })
+
+    this.refs.appChannel.perform('begin', {round: this.props.round+1})
   }
 
   nextQuestion = () => {
@@ -47,21 +55,38 @@ class Quiz extends React.Component {
       ...this.state,
       isFinished: false
     })
+  }
 
-    // let nextQuestionIndex = this.state.currentQuestionIndex+1
-    //
-    // if(nextQuestionIndex >= this.state.questions.length) {
-    //   this.setState({
-    //     ...this.state,
-    //     isFinished: true,
-    //     currentQuestionIndex: -1
-    //   })
-    // } else {
-    //   this.setState({
-    //     ...this.state,
-    //     currentQuestionIndex: nextQuestionIndex
-    //   })
-    // }
+  startTimer = () => {
+    this.timer = setInterval(this.tick, 100)
+  }
+
+  stopTimer = () => {
+    console.log('Answered in: '+this.state.time);
+
+    clearInterval(this.timer)
+    this.setState({
+      ...this.state,
+      score: this.state.time,
+      time: 0
+    })
+
+    this.props.clearTimeRunningOut()
+  }
+
+  tick = () => {
+    this.setState({
+      ...this.state,
+      time: this.state.time + 100
+    })
+
+    if(this.state.time > 10000) {
+      this.props.onTimeRunningOut()
+    }
+
+    if(this.state.time > 15000) {
+      this.stopTimer()
+    }
   }
 
   renderCurrentQuestion = () => {
@@ -77,12 +102,15 @@ class Quiz extends React.Component {
   }
 
   render () {
-    console.log('Round: ' + this.props.round);
     if(this.state.isFinished) {
       return <CurrentScore onNext={this.nextQuestion} currentRound={this.props.round} nextRound={this.props.nextRound} />
     } else if (!this.props.round || this.props.round == 0) {
       return <Wait justStart={this.props.onStartGame} teams={this.props.teams} />
     } else {
+      if(this.state.time === 0) {
+        this.startTimer()
+      }
+
       return (
         <div className="quiz-container">
           <ActionCable
