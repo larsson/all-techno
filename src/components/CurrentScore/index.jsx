@@ -5,7 +5,6 @@ import './currentscore.module.css'
 
 class CurrentScore extends React.Component {
   render() {
-    console.log(this.props);
     return (
       <div className="currentscore-container">
         <h1>Scoreboard #{this.props.round}</h1>
