@@ -16,7 +16,7 @@ const ListEntry = ({num, name, score}) => {
 class CurrentScore extends React.Component {
   renderScoreboard() {
     return this.props.scoreboard.map((entry, i) => (
-      <ListEntry num={i+1} name={entry.name} score={entry.score} />
+      <ListEntry key={i} num={i+1} name={entry.name} score={entry.score} />
     ))
   }
 
