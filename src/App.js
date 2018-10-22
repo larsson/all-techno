@@ -14,7 +14,7 @@ import { Redirect } from 'react-router'
 
 import './App.css';
 
-const WS_URL = 'ws://ninetens.herokuapp.com/cable'
+const WS_URL = 'wss://ninetens.herokuapp.com/cable'
 
 class App extends Component {
   state = {
