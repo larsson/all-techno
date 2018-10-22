@@ -8,6 +8,7 @@ class CurrentScore extends React.Component {
     console.log(this.props);
     return (
       <div className="currentscore-container">
+        <div className="currentscore-wait">Waiting for other teams to finish...</div>
         <h1>Scoreboard #{this.props.round}</h1>
         <div className="currentscore-scoreboard">
             <ul className="header">

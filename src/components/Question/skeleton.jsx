@@ -1,6 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Timer from './time.svg'
+import Video from '../../assets/rain.mp4'
+
 
 class QuestionSkeleton extends React.Component {
   state = {
@@ -23,6 +25,11 @@ class QuestionSkeleton extends React.Component {
 
     return (
       <div className="question-container">
+        <figure>
+          <video autoplay="autoplay" loop="loop" id="myVideo">
+            <source src={Video} type="video/mp4" />
+          </video>
+        </figure>
         <div className="question-timer">
           <img className="spin" src={Timer} />
           <span>15 SEC</span>
