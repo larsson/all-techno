@@ -1,4 +1,6 @@
 import React from "react";
+import { withRouter } from 'react-router'
+
 import Sound from 'react-sound';
 import themeSong from './KarnovTheme.mp3'
 import Logo from "./images/karnovLogo.png"
@@ -37,9 +39,8 @@ class Loading extends React.Component {
           <Sound
             url="/coin.mp3"
             playStatus={Sound.status.PLAYING}
-            ignoreMobileRestrictions={true}
             onFinishedPlaying={() => {
-              window.location = "/login"
+              this.props.history.push("/login")
             }} />
         }
         <h1>Tech Presents</h1>
@@ -51,15 +52,9 @@ class Loading extends React.Component {
         <img className="karnov-dino" src={karnovDino} alt="karnovdino" />
         <img className="karnov-meteor two" src={karnovMeteor} alt="karnovmeteor" />
         <img className="karnov-meteor three" src={karnovMeteor} alt="karnovmeteor" />
-        {(this.state && this.state.coinInserted === false) &&
-        <Sound
-          url={themeSong}
-          playStatus={Sound.status.PLAYING}
-          />
-        }
       </div>
     );
   }
 }
 
-export default Loading;
+export default withRouter(Loading);

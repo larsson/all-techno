@@ -19,6 +19,14 @@ class Login extends React.Component {
     }
   }
 
+  componentDidMount() {
+    this.props.setPlaySound('/KarnovTheme.mp3')
+  }
+
+  componentWillUnmount() {
+    this.props.stopSound()
+  }
+
   handleNext = () => {
     this.refs.appChannel.perform('login', {name: this.state.name})
     this.props.history.push("/start")
@@ -49,12 +57,6 @@ class Login extends React.Component {
         </div>
         <div className="login-continue">
           <span onClick={this.handleNext}>next</span>
-          <Sound
-            url={mp3}
-            ignoreMobileRestrictions={true}
-            playStatus={Sound.status.PLAYING}
-            autoPlay={true}
-          />
         </div>
       </div>
     )

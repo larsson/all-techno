@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import cn from 'classnames'
 
+import Sound from 'react-sound';
 import { ActionCableProvider, ActionCable } from 'react-actioncable-provider'
 
 import HighScore from "./components/HighScore";
@@ -105,8 +106,22 @@ class App extends Component {
     })
   }
 
+  onSoundFinish = () => {
+    this.setPlaySound()
+  }
+
+  setPlaySound = url => {
+    this.setState({
+      ...this.state,
+      playSound: url
+    })
+  }
+
+  stopSound = () => {
+    this.setPlaySound(undefined)
+  }
+
   render() {
-    console.log("State:", this.state);
     return (
       <ActionCableProvider url={WS_URL}>
         <ActionCable
@@ -114,14 +129,27 @@ class App extends Component {
           channel={{channel: 'MessagesChannel'}}
           onReceived={this.onReceived} />
 
+
         <div className={cn(this.state.classes)}>
+          {this.state.playSound &&
+            <Sound
+              url={this.state.playSound}
+              playStatus={Sound.status.PLAYING}
+              onFinishedPlaying={() => this.onSoundFinish()}
+               />
+          }
+
+
           <BrowserRouter>
             <Switch>
               <Route exact path="/">
                 <Loading />
               </Route>
               <Route exact path="/login">
-                <Login onLogin={name => this.onLogin(name)} />
+                <Login
+                  setPlaySound={this.setPlaySound}
+                  stopSound={this.stopSound}
+                  onLogin={name => this.onLogin(name)} />
               </Route>
               <Route exact path="/start">
                 <Quiz
