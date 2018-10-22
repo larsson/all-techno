@@ -50,11 +50,10 @@ class Loading extends React.Component {
         <img className="karnov-dino" src={karnovDino} alt="karnovdino" />
         <img className="karnov-meteor two" src={karnovMeteor} alt="karnovmeteor" />
         <img className="karnov-meteor three" src={karnovMeteor} alt="karnovmeteor" />
-        {(this.state && this.state.coinInserted == false) &&
+        {(this.state && this.state.coinInserted === false) &&
         <Sound
           url={themeSong}
           playStatus={Sound.status.PLAYING}
-          autoPlay={true}
           />
         }
       </div>
