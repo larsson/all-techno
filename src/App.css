@@ -26,9 +26,6 @@ html, body {
   animation: flash 0.1s infinite;
 }
 
-#root, .App 
-        { height: 100% !important; }
-
 @keyframes flash {
   0% {
     background: #A32E31;
@@ -39,3 +36,6 @@ html, body {
     color: #A32E31;
   }
 }
+
+#root, .App 
+        { height: 100% !important; }

@@ -1,5 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import Timer from './time.svg'
+
 import './currentscore.module.css'
 
 
@@ -7,6 +9,10 @@ class CurrentScore extends React.Component {
   render() {
     return (
       <div className="currentscore-container">
+        <div className="currentscore-wait">
+          <img src={Timer} />
+          <span>Waiting for other teams to finish...</span>
+        </div>
         <h1>Scoreboard #{this.props.round}</h1>
         <div className="currentscore-scoreboard">
             <ul className="header">
