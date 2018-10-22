@@ -1,16 +1,31 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import Timer from './time.svg'
 
 import './currentscore.module.css'
 
+const ListEntry = ({num, name, score}) => {
+  return (
+    <li>
+      <div>{num}</div>
+      <div>{name}</div>
+      <div>{score}</div>
+    </li>
+  )
+}
 
 class CurrentScore extends React.Component {
+  renderScoreboard() {
+    return this.props.scoreboard.map((entry, i) => (
+      <ListEntry num={i+1} name={entry.name} score={entry.score} />
+    ))
+  }
+
   render() {
+    console.log(this.props);
     return (
       <div className="currentscore-container">
         <div className="currentscore-wait">
-          <img src={Timer} />
+          <img alt="" src={Timer} />
           <span>Waiting for other teams to finish...</span>
         </div>
         <h1>Scoreboard #{this.props.round}</h1>
@@ -21,76 +36,9 @@ class CurrentScore extends React.Component {
               <li>SCORE</li>
             </ul>
             <ul className="list">
-              <li>
-                <div>1.</div>
-                <div>AAA</div>
-                <div>111</div>
-              </li>
-              <li>
-                <div>2.</div>
-                <div>AAA</div>
-                <div>124112</div>
-              </li>
-              <li>
-                <div>3.</div>
-                <div>AAA</div>
-                <div>12411</div>
-              </li>
-            <li>
-              <div>3.</div>
-              <div>AAA</div>
-              <div>12411</div>
-            </li>
-            <li>
-              <div>3.</div>
-              <div>AAA</div>
-              <div>12411</div>
-            </li>
-            <li>
-              <div>3.</div>
-              <div>AAA</div>
-              <div>12411</div>
-            </li>
-            <li>
-              <div>3.</div>
-              <div>AAA</div>
-              <div>12411</div>
-            </li>
-            <li>
-              <div>3.</div>
-              <div>AAA</div>
-              <div>12411</div>
-            </li>
-            <li>
-              <div>3.</div>
-              <div>AAA</div>
-              <div>12411</div>
-            </li>
-            <li>
-              <div>3.</div>
-              <div>AAA</div>
-              <div>12411</div>
-            </li>
-            <li>
-              <div>3.</div>
-              <div>AAA</div>
-              <div>12411</div>
-            </li>
-            <li>
-              <div>3.</div>
-              <div>AAA</div>
-              <div>12411</div>
-            </li>
-            <li>
-              <div>3.</div>
-              <div>AAA</div>
-              <div>12411</div>
-            </li>
-            <li>
-              <div>3.</div>
-              <div>AAA</div>
-              <div>12411</div>
-            </li>
+              {this.props.scoreboard && this.props.scoreboard.length > 0 &&
+                this.renderScoreboard()
+              }
             </ul>
         </div>
         {this.props.nextRound > this.props.currentRound &&
