@@ -75,15 +75,11 @@ class App extends Component {
   }
 
   onLogin = teamName => {
-    document.cookie = JSON.stringify({name: teamName})
     this.refs.appChannel.perform('login', {name: teamName})
+    document.cookie = JSON.stringify({name: teamName})
   }
 
   onNextRound = () => {
-    if(this.state.nextRound > questions.length) {
-      console.log('Done');
-    }
-
     this.setState({
       ...this.state,
       round: this.state.nextRound
@@ -93,14 +89,6 @@ class App extends Component {
   onStartGame = () => {
     this.refs.appChannel.perform('begin', {round: 1})
   }
-
-  // onAnswer = (isCorrect, time, round) => {
-  //   this.refs.appChannel.perform('answer', {
-  //     score: time,
-  //     round: round,
-  //     team: this.state.teamName
-  //   })
-  // }
 
   onTimeRunningOut = () => {
     if(this.state.classes.indexOf('TimeRunningOut') === -1) {
@@ -172,9 +160,6 @@ class App extends Component {
                   onStartGame={this.onStartGame}
                   scoreboard={this.state.scoreboard}
                   {...this.state} />
-              </Route>
-              <Route exact path="/currentscore">
-                <CurrentScore />
               </Route>
               <Route exact path="/wait">
                 <div>
