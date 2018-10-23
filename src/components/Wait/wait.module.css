@@ -144,7 +144,8 @@
 }
 
 .marquee span:after {
-  content: ' '
+  content: ' ';
+  padding-right: 40px;
 }
 
 @keyframes marquee {

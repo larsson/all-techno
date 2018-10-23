@@ -26,6 +26,8 @@ class Login extends React.Component {
   }
 
   handleNext = () => {
+    this.props.onLogin(this.state.name)
+
     this.props.history.push("/start")
   }
 
