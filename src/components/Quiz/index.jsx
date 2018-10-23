@@ -46,8 +46,6 @@ class Quiz extends React.Component {
   }
 
   onAnswerSelect = answerIndex => {
-    console.log('answer', answerIndex);
-
     this.refs.appChannel.perform('answer', {
       score: this.calculateScore(this.state.time, answerIndex),
       round: this.props.round,
@@ -64,7 +62,7 @@ class Quiz extends React.Component {
     })
 
     //if(questions.length < this.props.round) {
-    if(15 === this.props.round) {
+    if(9 === this.props.round) {
       this.props.history.push('/highscore')
     }
 
