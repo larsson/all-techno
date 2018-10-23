@@ -59,8 +59,7 @@ export default [
     answers: ['Thursday', 'Friday', 'Saturday', 'Sunday'],
     type: 'text',
     correct_answer: 1,
-  }
-  ,
+  },
   {
     text: 'What was the name of the sheep who was the first successfully cloned animal in 1996?',
     answers: ['Dolly', 'Molly', 'Holly'],

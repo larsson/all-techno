@@ -27,7 +27,7 @@ class App extends Component {
     document.cookie = ""
 
     this.state = {
-      teamName: document.cookie || undefined,
+      teamName: undefined,
       teams: [],
       round: 0,
       nextRound: 0,
