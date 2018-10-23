@@ -3,9 +3,9 @@ import Timer from './time.svg'
 
 import './currentscore.module.css'
 
-const ListEntry = ({num, name, score}) => {
+const ListEntry = ({num, name, score, currentUser=false}) => {
   return (
-    <li>
+    <li className={""+(currentUser ? "currentUser" : "")}>
       <div>{num}</div>
       <div>{name}</div>
       <div>{score}</div>
@@ -16,7 +16,7 @@ const ListEntry = ({num, name, score}) => {
 class CurrentScore extends React.Component {
   renderScoreboard() {
     return this.props.scoreboard.map((entry, i) => (
-      <ListEntry key={i} num={i+1} name={entry.name} score={entry.score} />
+      <ListEntry key={i} num={i+1} name={entry.name} currentUser={entry.name === this.props.teamName} score={entry.score} />
     ))
   }
 

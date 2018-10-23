@@ -55,7 +55,7 @@
   grid-template-rows: 1fr;
 }
 
-.currentscore-scoreboard ul.list li:first-child {
+.currentscore-scoreboard ul.list li.currentUser {
     animation: blink 1s steps(4, start) infinite;
 }
 

@@ -111,6 +111,7 @@ class Quiz extends React.Component {
         onNext={this.nextQuestion}
         currentRound={this.props.round}
         nextRound={this.props.nextRound}
+        teamName={this.props.teamName}
         scoreboard={this.props.scoreboard} />
     }
 

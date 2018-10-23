@@ -36,6 +36,8 @@ class App extends Component {
       nextRound: 0,
       classes: ['App']
     }
+
+    console.log('Logged in with: '+this.state.teamName);
   }
 
   onReceived = data => {
@@ -154,6 +156,7 @@ class App extends Component {
               </Route>
               <Route exact path="/start">
                 <Quiz
+                  teamName={this.state.teamName}
                   onTimeRunningOut={this.onTimeRunningOut}
                   clearTimeRunningOut={this.clearTimeRunningOut}
                   onNextRound={this.onNextRound}
