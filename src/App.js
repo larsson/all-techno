@@ -153,22 +153,30 @@ class App extends Component {
                   onLogin={name => this.onLogin(name)} />
               </Route>
               <Route exact path="/start">
-                <Quiz
-                  teamName={this.state.teamName}
-                  onTimeRunningOut={this.onTimeRunningOut}
-                  clearTimeRunningOut={this.clearTimeRunningOut}
-                  onNextRound={this.onNextRound}
-                  onStartGame={this.onStartGame}
-                  scoreboard={this.state.scoreboard}
-                  {...this.state} />
+                <React.Fragment>
+                  {this.state.teamName === undefined &&
+                    <Redirect to={`/login`} />
+                  }
+                  <Quiz
+                    teamName={this.state.teamName}
+                    onTimeRunningOut={this.onTimeRunningOut}
+                    clearTimeRunningOut={this.clearTimeRunningOut}
+                    onNextRound={this.onNextRound}
+                    onStartGame={this.onStartGame}
+                    scoreboard={this.state.scoreboard}
+                    {...this.state} />
+                </React.Fragment>
               </Route>
               <Route exact path="/wait">
-                <div>
+                <React.Fragment>
+                  {this.state.teamName === undefined &&
+                    <Redirect to={`/login`} />
+                  }
                   {this.state.round > 0 &&
                     <Redirect to={`/start`} />
                   }
                   <Wait teams={this.state.teams} />
-                </div>
+                </React.Fragment>
               </Route>
               <Route exact path="/highscore">
                 <HighScore scoreboard={this.state.scoreboard} />

@@ -14,7 +14,7 @@ import questions from "../../config/questions.js"
 import './quiz.module.css'
 
 const tickInterval = 25
-const baseTime = 16000
+const baseTime = 31000
 
 class Quiz extends React.Component {
   constructor(props) {
@@ -34,6 +34,10 @@ class Quiz extends React.Component {
   }
 
   calculateScore = (time, answerIndex) => {
+    console.log('baseTime', baseTime);
+    console.log('time', time);
+    console.log('answerIndex', answerIndex);
+    console.log('correct_answer', questions[this.props.round].correct_answer);
     if(questions[this.props.round].correct_answer !== answerIndex) {
       return 0
     }
@@ -60,7 +64,7 @@ class Quiz extends React.Component {
     })
 
     //if(questions.length < this.props.round) {
-    if(5 === this.props.round) {
+    if(15 === this.props.round) {
       this.props.history.push('/highscore')
     }
 
@@ -96,7 +100,7 @@ class Quiz extends React.Component {
       time: (nextTime > baseTime ? baseTime : nextTime)
     })
 
-    if(this.state.time >= 11000) {
+    if(this.state.time >= 17000) {
       this.props.onTimeRunningOut()
     }
 
