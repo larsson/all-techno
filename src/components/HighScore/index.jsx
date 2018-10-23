@@ -20,7 +20,7 @@ function ordinal_suffix_of(i) {
 const HighScore = ({scoreboard=[]}) => {
   return (
     <div className="scores-container">
-      <h1>These are the highscores</h1>
+      <h1>GAME OVER</h1>
       <div className="scoreboard">
         <ul className="header">
             <li>RANK</li>

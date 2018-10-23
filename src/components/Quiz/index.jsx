@@ -64,7 +64,7 @@ class Quiz extends React.Component {
       this.props.history.push('/highscore')
     }
 
-    this.refs.appChannel.perform('begin', {round: this.props.round+1})
+    // this.refs.appChannel.perform('begin', {round: this.props.round+1})
   }
 
   nextQuestion = () => {

@@ -41,7 +41,7 @@ class App extends Component {
   }
 
   onReceived = data => {
-    console.log(data);
+    console.log('RECEIVED: ', data);
     switch(data.message) {
       case 'teamLoggedIn':
         this.setState({
@@ -89,7 +89,7 @@ class App extends Component {
   }
 
   onStartGame = () => {
-    this.refs.appChannel.perform('begin', {round: 1})
+    // this.refs.appChannel.perform('begin', {round: 1})
   }
 
   onTimeRunningOut = () => {
