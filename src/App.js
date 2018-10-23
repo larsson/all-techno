@@ -24,8 +24,6 @@ class App extends Component {
   constructor() {
     super()
 
-    document.cookie = ""
-
     this.state = {
       teamName: undefined,
       teams: [],
@@ -40,13 +38,13 @@ class App extends Component {
   onReceived = data => {
     console.log('RECEIVED: ', data);
     switch(data.message) {
-      case 'teamLoggedIn':
-        this.setState({
-          ...this.state,
-          teamName: data.name,
-          teams: data.teams
-        })
-        break;
+      // case 'teamLoggedIn':
+      //   this.setState({
+      //     ...this.state,
+      //     teamName: data.name,
+      //     teams: data.teams
+      //   })
+      //   break;
       case 'roundReady':
         if(this.state.round === 0) {
           this.setState({
@@ -75,7 +73,11 @@ class App extends Component {
 
   onLogin = teamName => {
     this.refs.appChannel.perform('login', {name: teamName})
-    document.cookie = JSON.stringify({name: teamName})
+    this.setState({
+      ...this.state,
+      teamName: teamName
+    })
+    // document.cookie = JSON.stringify({name: teamName})
   }
 
   onNextRound = () => {
