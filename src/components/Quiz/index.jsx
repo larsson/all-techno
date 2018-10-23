@@ -45,7 +45,7 @@ class Quiz extends React.Component {
     console.log('answer', answerIndex);
 
     this.refs.appChannel.perform('answer', {
-      score: this.calculateScore(this.state.time),
+      score: this.calculateScore(this.state.time, answerIndex),
       round: this.props.round,
       name: this.props.teamName
     })
