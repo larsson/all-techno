@@ -24,13 +24,10 @@ class App extends Component {
   constructor() {
     super()
 
-    let cookieObj = {}
-    if(document.cookie) {
-      cookieObj = JSON.parse(document.cookie);
-    }
+    document.cookie = ""
 
     this.state = {
-      teamName: cookieObj.name || undefined,
+      teamName: document.cookie || undefined,
       teams: [],
       round: 0,
       nextRound: 0,
