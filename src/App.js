@@ -38,13 +38,12 @@ class App extends Component {
   onReceived = data => {
     console.log('RECEIVED: ', data);
     switch(data.message) {
-      // case 'teamLoggedIn':
-      //   this.setState({
-      //     ...this.state,
-      //     teamName: data.name,
-      //     teams: data.teams
-      //   })
-      //   break;
+      case 'teamLoggedIn':
+        this.setState({
+          ...this.state,
+          teams: data.teams
+        })
+        break;
       case 'roundReady':
         if(this.state.round === 0) {
           this.setState({
