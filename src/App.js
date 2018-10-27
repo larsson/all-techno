@@ -87,7 +87,7 @@ class App extends Component {
   }
 
   onStartGame = () => {
-    // this.refs.appChannel.perform('begin', {round: 1})
+    this.refs.appChannel.perform('begin', {round: 1})
   }
 
   onTimeRunningOut = () => {

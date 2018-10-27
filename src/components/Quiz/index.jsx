@@ -62,11 +62,11 @@ class Quiz extends React.Component {
     })
 
     //if(questions.length < this.props.round) {
-    if(9 === this.props.round) {
+    if(15 === this.props.round) {
       this.props.history.push('/highscore')
     }
 
-    // this.refs.appChannel.perform('begin', {round: this.props.round+1})
+     this.refs.appChannel.perform('begin', {round: this.props.round+1})
   }
 
   nextQuestion = () => {
